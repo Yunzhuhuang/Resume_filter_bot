@@ -82,4 +82,21 @@ source adk_env/bin/activate
 pip install google-adk python-dotenv pydantic google-api-python-client google-auth-oauthlib
 
 # Run on local UI
-ask web # you are now free to talk with the agent
+adk web # you are now free to talk with the agent
+```
+
+### Deployment
+This project has already been deployed to Google Cloud Agent Engine, Below is an example to interact with it:
+```bash
+remote_app = agent_engines.get(
+    "projects/162114671603/locations/us-central1/reasoningEngines/1027075801738117120" # URL of the agent
+)
+
+remote_session = remote_app.create_session(user_id="u_456") # create one session
+for event in remote_app.stream_query( 
+    user_id="u_456",
+    session_id=remote_session["id"],
+    message="hi", # starting by saying hi, you will receive guidance on what next
+):
+    print(event)
+```
