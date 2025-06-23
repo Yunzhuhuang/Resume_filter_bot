@@ -62,7 +62,7 @@ Follow these steps to get your Resume Filtering Bot up and running.
 * Python 3.9+ installed.
 * `git` installed.
 
-### 1. Clone the Repository
+### Commands
 
 First, clone this repository to your local machine:
 
